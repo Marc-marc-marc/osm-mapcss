@@ -1,0 +1,69 @@
+meta {
+    title: "Extended validator rules";
+    version: "1.02_2023-04-15";
+    description: "try to catch 'all' fixables errors and improvement";
+    author: "Marcmarc";
+    link: "https://github.com/Marc-marc-marc/osm-mapcss";
+    min-josm-version: "14481";
+    baselanguage: "en";
+    -osmoseTags: list("fix:chair", "deprecated");
+    -osmoseItemClassLevel: "4010/4010/2";
+}
+meta[lang=fr] {
+    title: "Règles de validations étendues";
+    description: "essaye de traiter "toutes" les erreurs corrigibles et les améliorations";
+}
+
+*[source_date][source] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "source:date";
+    group: tr("deprecated tagging");
+    fixChangeKey: "source_date=>source:date";
+}
+
+*[date:source][source] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "source:date";
+    group: tr("deprecated tagging");
+    fixChangeKey: "source_date=>source:date";
+}
+
+*[date:survey] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "survey:date";
+    group: tr("deprecated tagging");
+    fixChangeKey: "date:survey=>survey:date";
+}
+
+*[crossing=island] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "crossing:island=yes";
+    group: tr("deprecated tagging");
+    fixRemove: "crossing";
+    fixAdd: "crossing:island=yes";
+}
+
+*[diaper=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "changing_table=no";
+    group: tr("deprecated tagging");
+    fixRemove: "diaper";
+    fixAdd: "changing_table=no";
+}
+
+node[pipeline=marker][!marker] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    suggestAlternative: "marker=yes + subject=pipeline";
+    fixRemove: "pipeline";
+    fixAdd: "marker=yes";
+    fixAdd: "subject=pipeline";
+}
+
+node[pipeline=marker][marker] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    suggestAlternative: "subject=pipeline";
+    fixRemove: "pipeline";
+    fixAdd: "subject=pipeline";
+}

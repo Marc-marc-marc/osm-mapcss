@@ -1,69 +1,17 @@
 meta {
     title: "Extended validator rules";
-    version: "1.01_2023-04-15";
+    version: "1.02_2023-04-15";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
-    link: "https://josm.openstreetmap.de/wiki/Rules/ExtendedRules";
-    min-josm-version: "14481"; /* due to osmose attributs */
+    link: "https://github.com/Marc-marc-marc/osm-mapcss";
+    min-josm-version: "14481";
     baselanguage: "en";
+    -osmoseTags: list("fix:chair", "deprecated", "parking");
+    -osmoseItemClassLevel: "4010/4010/2";
 }
 meta[lang=fr] {
     title: "Règles de validations étendues";
     description: "essaye de traiter "toutes" les erreurs corrigibles et les améliorations";
-}
-
-*[source_date][source] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
-    suggestAlternative: "source:date";
-    group: tr("deprecated tagging");
-    fixChangeKey: "source_date=>source:date";
-    -osmoseTags: list("fix:chair");
-}
-
-*[date:source][source] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
-    suggestAlternative: "source:date";
-    group: tr("deprecated tagging");
-    fixChangeKey: "source_date=>source:date";
-    -osmoseTags: list("fix:chair");
-}
-
-*[date:survey] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
-    suggestAlternative: "survey:date";
-    group: tr("deprecated tagging");
-    fixChangeKey: "date:survey=>survey:date";
-    -osmoseTags: list("fix:chair");
-}
-
-*[wheelchair=unknown] {
-    throwWarning: tr("unknown is noise without added value");
-    fixRemove: "wheelchair";
-    -osmoseTags: list("fix:chair");
-}
-
-*[toilets:wheelchair=unknown] {
-    throwWarning: tr("unknown is noise without added value");
-    fixRemove: "toilets:wheelchair";
-    -osmoseTags: list("fix:chair");
-}
-
-*[crossing=island] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
-    suggestAlternative: "crossing:island=yes";
-    group: tr("deprecated tagging");
-    fixRemove: "crossing";
-    fixAdd: "crossing:island=yes";
-    -osmoseTags: list("fix:chair");
-}
-
-*[diaper=no] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
-    suggestAlternative: "changing_table=no";
-    group: tr("deprecated tagging");
-    fixRemove: "diaper";
-    fixAdd: "changing_table=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=no_parking] {
@@ -72,7 +20,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:restriction=no_parking";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=no_parking] {
@@ -81,7 +28,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition";
     fixAdd: "parking:both:restriction=no_parking";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=no_parking] {
@@ -90,7 +36,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:restriction=no_parking";
     fixAdd: "parking:left=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=no_parking] {
@@ -99,7 +44,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:restriction=no_parking";
     fixAdd: "parking:right=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:both=no_parking] {
@@ -107,7 +51,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:both";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane=no_parking] {
@@ -115,7 +58,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:left=no_parking] {
@@ -123,7 +65,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:left";
     fixAdd: "parking:left=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:right=no_parking] {
@@ -132,7 +73,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:right";
     fixAdd: "parking:lane:restriction=no_parking";
     fixAdd: "parking:lane=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=no_stopping {
@@ -141,7 +81,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:restriction=no_stopping;
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=no_stopping {
@@ -150,7 +89,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition";
     fixAdd: "parking:both:restriction=no_stopping;
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=no_stopping {
@@ -159,7 +97,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:restriction=no_stopping;
     fixAdd: "parking:left=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=no_stopping {
@@ -168,7 +105,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:restriction=no_stopping;
     fixAdd: "parking:right=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=disc][!parking:both][!parking:left][!parking:right] {
@@ -177,7 +113,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:authentication:disc=yes";
     fixAdd: "parking:both=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=disc][parking:both], *[parking:condition:both=disc][parking:left],*[parking:condition:both=disc][parking:right] {
@@ -185,7 +120,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:authentication:disc=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=disc][parking:both][parking:both!=no] {
@@ -194,7 +128,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition";
     fixAdd: "parking:both:authentication:disc=yes";
     fixAdd: "parking:both=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=disc] {
@@ -202,7 +135,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition";
     fixAdd: "parking:authentication:disc=yes"; /* not perfect but side is unknown */
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=disc][!parking:left] {
@@ -211,7 +143,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:authentication:disc=yes";
     fixAdd: "parking:left=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=disc][parking:left] {
@@ -219,7 +150,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:authentication:disc=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=disc][!parking:right] {
@@ -228,7 +158,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:authentication:disc=yes";
     fixAdd: "parking:right=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=disc][parking:right] {
@@ -236,7 +165,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:authentication:disc=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=free] {
@@ -244,7 +172,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:fee=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=free] {
@@ -252,7 +179,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition";
     fixAdd: "parking:fee=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=free] {
@@ -260,7 +186,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:fee=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=free] {
@@ -268,7 +193,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:fee=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=ticket], *[parking:condition:both=tickets] {
@@ -276,7 +200,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:fee=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=ticket], *[parking:condition=tickets] {
@@ -284,7 +207,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition";
     fixAdd: "parking:fee=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=ticket], *[parking:condition:left=tickets] {
@@ -292,7 +214,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:fee=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=ticket], *[parking:condition:right=tickets] {
@@ -300,7 +221,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:fee=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=residents] {
@@ -308,7 +228,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:access=private";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=residents] {
@@ -316,7 +235,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition";
     fixAdd: "parking:access=private";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=residents] {
@@ -324,7 +242,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:access=private";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=residents] {
@@ -332,7 +249,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:access=private";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=customers] {
@@ -340,7 +256,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:access=customers";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=customers] {
@@ -348,7 +263,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition";
     fixAdd: "parking:access=customers";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=customers] {
@@ -356,7 +270,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:access=customers";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=customers] {
@@ -364,7 +277,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:access=customers";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:both=marked] {
@@ -372,7 +284,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:both";
     fixAdd: "parking:both:markings=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane=marked] {
@@ -380,7 +291,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane";
     fixAdd: "parking:markings=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:left=marked] {
@@ -388,7 +298,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:left";
     fixAdd: "parking:left:markings=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:right=marked] {
@@ -396,7 +305,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:right";
     fixAdd: "parking:right:markings=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 /* error for parking:lane:both=marked */
@@ -405,7 +313,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:markings=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both="ticket;residents"] {
@@ -413,7 +320,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:fee=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition="ticket;residents"] {
@@ -421,7 +327,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition";
     fixAdd: "parking:fee=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left="ticket;residents"] {
@@ -429,7 +334,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:fee=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right="ticket;residents"] {
@@ -437,7 +341,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:fee=yes";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=no_stopping ] {
@@ -445,7 +348,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:restriction=no_stopping ";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=no_stopping ] {
@@ -453,7 +355,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition";
     fixAdd: "parking:both:restriction=no_stopping ";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=no_stopping ] {
@@ -461,7 +362,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:restriction=no_stopping ";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=no_stopping ] {
@@ -469,7 +369,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:restriction=no_stopping ";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=disabled] {
@@ -478,7 +377,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:access=no";
     fixAdd: "parking:both:disabled=designated";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=disabled] {
@@ -487,7 +385,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition";
     fixAdd: "parking:access=no";
     fixAdd: "parking:disabled=designated";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=disabled] {
@@ -496,7 +393,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:access=no";
     fixAdd: "parking:left:disabled=designated";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=disabled] {
@@ -505,7 +401,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:access=no";
     fixAdd: "parking:right:disabled=designated";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:both=parallel] {
@@ -513,7 +408,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:both";
     fixAdd: "parking:both:orientation=parallel";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane=parallel] {
@@ -521,7 +415,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane";
     fixAdd: "parking:orientation=parallel";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:left=parallel] {
@@ -529,7 +422,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:left";
     fixAdd: "parking:left:orientation=parallel";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:right=parallel] {
@@ -537,7 +429,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:right";
     fixAdd: "parking:right:orientation=parallel";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:both=diagonal] {
@@ -545,7 +436,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:both";
     fixAdd: "parking:both:orientation=diagonal";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane=diagonal] {
@@ -553,7 +443,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane";
     fixAdd: "parking:orientation=diagonal";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:left=diagonal] {
@@ -561,7 +450,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:left";
     fixAdd: "parking:left:orientation=diagonal";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:right=diagonal] {
@@ -569,7 +457,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:right";
     fixAdd: "parking:right:orientation=diagonal";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:both=perpendicular] {
@@ -577,7 +464,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:both";
     fixAdd: "parking:both:orientation=perpendicular";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane=perpendicular] {
@@ -585,7 +471,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane";
     fixAdd: "parking:orientation=perpendicular";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:left=perpendicular] {
@@ -593,7 +478,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:left";
     fixAdd: "parking:left:orientation=perpendicular";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:right=perpendicular] {
@@ -601,7 +485,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:right";
     fixAdd: "parking:right:orientation=perpendicular";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:both=no_stopping] {
@@ -610,7 +493,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:both";
     fixAdd: "parking:both:restriction=no_stopping";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition=no_stopping] {
@@ -619,7 +501,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition";
     fixAdd: "parking:both:restriction=no_stopping";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:left=no_stopping] {
@@ -628,7 +509,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:left";
     fixAdd: "parking:left:restriction=no_stopping";
     fixAdd: "parking:left=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:condition:right=no_stopping] {
@@ -637,7 +517,6 @@ meta[lang=fr] {
     fixRemove: "parking:condition:right";
     fixAdd: "parking:right:restriction=no_stopping";
     fixAdd: "parking:right=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:both=no_stopping] {
@@ -646,7 +525,6 @@ meta[lang=fr] {
     fixRemove: "parking:lane:both";
     fixAdd: "parking:both:restriction=no_stopping";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane=no_stopping] {
@@ -655,7 +533,6 @@ meta[lang=fr] {
     fixRemove: "parking:lane";
     fixAdd: "parking:both:restriction=no_stopping";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:left=no_stopping] {
@@ -664,7 +541,6 @@ meta[lang=fr] {
     fixRemove: "parking:lane:left";
     fixAdd: "parking:left:restriction=no_stopping";
     fixAdd: "parking:left=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:right=no_stopping] {
@@ -673,7 +549,6 @@ meta[lang=fr] {
     fixRemove: "parking:lane:right";
     fixAdd: "parking:right:restriction=no_stopping";
     fixAdd: "parking:right=no";
-    -osmoseTags: list("fix:chair");
 }
 
 
@@ -682,7 +557,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:both";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane=no] {
@@ -690,7 +564,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane";
     fixAdd: "parking:both=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:left=no] {
@@ -698,7 +571,6 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:left";
     fixAdd: "parking:left=no";
-    -osmoseTags: list("fix:chair");
 }
 
 *[parking:lane:right=no] {
@@ -707,90 +579,4 @@ meta[lang=fr] {
     fixRemove: "parking:condition:right";
     fixAdd: "parking:lane:restriction=no";
     fixAdd: "parking:lane=no";
-    -osmoseTags: list("fix:chair");
-}
-
-relation[operator="TPF Auto"][!operator:wikidata][inside("CH") {
-    throwWarning: tr("{0} is the old name", "{0.tag}");
-    suggestAlternative: "operator=TPF";
-    fixAdd: "operator=TPF";
-    fixAdd: "operator:wikidata=Q609332";
-    -osmoseTags: list("fix:chair");
-}
-
-relation[operator="TPF Auto"][operator:wikidata=Q609332][inside("CH") {
-    throwWarning: tr("{0} is the old name", "{0.tag}");
-    suggestAlternative: "operator=TPF";
-    fixAdd: "operator=TPF";
-    -osmoseTags: list("fix:chair");
-}
-
-relation[operator="TPF"][!operator:wikidata][inside("CH") {
-    throwWarning: tr("{0} wkidata", "{0.tag}");
-    fixAdd: "operator:wikidata=Q609332";
-    -osmoseTags: list("fix:chair");
-}
-
-relation[network=frimobil][!network:wikidata][inside("CH") {
-    throwWarning: tr("{0} wrong caps", "{0.tag}");
-    suggestAlternative: "network=Frimobil";
-    fixAdd: "network=Frimobil";
-    fixAdd: "network:wikidata=Q2394200";
-    -osmoseTags: list("fix:chair");
-}
-
-relation[network=frimobil][network:wikidata=Q2394200][inside("CH") {
-    throwWarning: tr("{0} wrong caps", "{0.tag}");
-    suggestAlternative: "network=Frimobil";
-    fixAdd: "network=Frimobil";
-    -osmoseTags: list("fix:chair");
-}
-
-relation[network=Frimobil][!network:wikidata][inside("CH") {
-    throwWarning: tr("{0} wikidata", "{0.tag}");
-    fixAdd: "network:wikidata=Q2394200";
-    -osmoseTags: list("fix:chair");
-}
-
-node[pipeline=marker][!marker] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
-    group: tr("deprecated tagging");
-    suggestAlternative: "marker=yes + subject=pipeline";
-    fixRemove: "pipeline";
-    fixAdd: "marker=yes";
-    fixAdd: "subject=pipeline";
-    -osmoseTags: list("fix:chair");
-}
-
-node[pipeline=marker][marker] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
-    group: tr("deprecated tagging");
-    suggestAlternative: "subject=pipeline";
-    fixRemove: "pipeline";
-    fixAdd: "subject=pipeline";
-    -osmoseTags: list("fix:chair");
-}
-
-node[type=multipolygon] {
-    throwError: tr("{0} on a node. Should be used in a relation", "{0.tag}");
-    fixRemove: "type";
-    -osmoseTags: list("fix:chair");
-}
-
-way!:closed[type=multipolygon] {
-    throwError: tr("{0} have no meaning on node and unclosed way", "{0.tag}");
-    group: tr("type=multipolygon not on a relation");
-    fixRemove: "type";
-    -osmoseTags: list("fix:chair");
-}
-
-way:area-style[type=multipolygon] {
-    throwError: tr("area (as closed way) shouldn't have type=multipolygon");
-    group: tr("type=multipolygon not on a relation");
-    fixRemove: "type";
-    -osmoseTags: list("fix:chair");
-}
-
-*[addr:housenumber=~/.*-.*/] {
-    throwError: tr("no - in addr:housenumber");
 }

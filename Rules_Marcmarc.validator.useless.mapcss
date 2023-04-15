@@ -1,0 +1,42 @@
+meta {
+    title: "Extended validator rules";
+    version: "1.01_2023-04-15";
+    description: "try to catch 'all' fixables errors and improvement";
+    author: "Marcmarc";
+    link: "https://github.com/Marc-marc-marc/osm-mapcss";
+    min-josm-version: "14481";
+    baselanguage: "en";
+    -osmoseTags: list("fix:chair");
+}
+meta[lang=fr] {
+    title: "Règles de validations étendues";
+    description: "essaye de traiter "toutes" les erreurs corrigibles et les améliorations";
+}
+
+*[wheelchair=unknown] {
+    throwWarning: tr("unknown is noise without added value");
+    fixRemove: "wheelchair";
+}
+
+*[toilets:wheelchair=unknown] {
+    throwWarning: tr("unknown is noise without added value");
+    fixRemove: "toilets:wheelchair";
+}
+
+node[type=multipolygon] {
+    throwError: tr("{0} have no meaning on node and unclosed way", "{0.tag}");
+    group: tr("type=multipolygon not on a relation");
+    fixRemove: "type";
+}
+
+way!:closed[type=multipolygon] {
+    throwError: tr("{0} have no meaning on node and unclosed way", "{0.tag}");
+    group: tr("type=multipolygon not on a relation");
+    fixRemove: "type";
+}
+
+way:area-style[type=multipolygon] {
+    throwError: tr("area (as closed way) shouldn't have type=multipolygon");
+    group: tr("type=multipolygon not on a relation");
+    fixRemove: "type";
+}
