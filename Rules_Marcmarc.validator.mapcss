@@ -1,0 +1,796 @@
+meta {
+    title: "Extended validator rules";
+    version: "1.01_2023-04-15";
+    description: "try to catch 'all' fixables errors and improvement";
+    author: "Marcmarc";
+    link: "https://josm.openstreetmap.de/wiki/Rules/ExtendedRules";
+    min-josm-version: "14481"; /* due to osmose attributs */
+    baselanguage: "en";
+}
+meta[lang=fr] {
+    title: "Règles de validations étendues";
+    description: "essaye de traiter "toutes" les erreurs corrigibles et les améliorations";
+}
+
+*[source_date][source] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "source:date";
+    group: tr("deprecated tagging");
+    fixChangeKey: "source_date=>source:date";
+    -osmoseTags: list("fix:chair");
+}
+
+*[date:source][source] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "source:date";
+    group: tr("deprecated tagging");
+    fixChangeKey: "source_date=>source:date";
+    -osmoseTags: list("fix:chair");
+}
+
+*[date:survey] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "survey:date";
+    group: tr("deprecated tagging");
+    fixChangeKey: "date:survey=>survey:date";
+    -osmoseTags: list("fix:chair");
+}
+
+*[wheelchair=unknown] {
+    throwWarning: tr("unknown is noise without added value");
+    fixRemove: "wheelchair";
+    -osmoseTags: list("fix:chair");
+}
+
+*[toilets:wheelchair=unknown] {
+    throwWarning: tr("unknown is noise without added value");
+    fixRemove: "toilets:wheelchair";
+    -osmoseTags: list("fix:chair");
+}
+
+*[crossing=island] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "crossing:island=yes";
+    group: tr("deprecated tagging");
+    fixRemove: "crossing";
+    fixAdd: "crossing:island=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[diaper=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    suggestAlternative: "changing_table=no";
+    group: tr("deprecated tagging");
+    fixRemove: "diaper";
+    fixAdd: "changing_table=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=no_parking] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:restriction=no_parking";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=no_parking] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:both:restriction=no_parking";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=no_parking] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:restriction=no_parking";
+    fixAdd: "parking:left=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=no_parking] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:restriction=no_parking";
+    fixAdd: "parking:right=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:both=no_parking] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane=no_parking] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:left=no_parking] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left";
+    fixAdd: "parking:left=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:right=no_parking] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:lane:restriction=no_parking";
+    fixAdd: "parking:lane=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=no_stopping {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:restriction=no_stopping;
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=no_stopping {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:both:restriction=no_stopping;
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=no_stopping {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:restriction=no_stopping;
+    fixAdd: "parking:left=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=no_stopping {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:restriction=no_stopping;
+    fixAdd: "parking:right=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=disc][!parking:both][!parking:left][!parking:right] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:authentication:disc=yes";
+    fixAdd: "parking:both=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=disc][parking:both], *[parking:condition:both=disc][parking:left],*[parking:condition:both=disc][parking:right] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:authentication:disc=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=disc][parking:both][parking:both!=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:both:authentication:disc=yes";
+    fixAdd: "parking:both=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=disc] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:authentication:disc=yes"; /* not perfect but side is unknown */
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=disc][!parking:left] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:authentication:disc=yes";
+    fixAdd: "parking:left=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=disc][parking:left] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:authentication:disc=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=disc][!parking:right] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:authentication:disc=yes";
+    fixAdd: "parking:right=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=disc][parking:right] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:authentication:disc=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=free] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:fee=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=free] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:fee=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=free] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:fee=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=free] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:fee=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=ticket], *[parking:condition:both=tickets] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:fee=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=ticket], *[parking:condition=tickets] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:fee=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=ticket], *[parking:condition:left=tickets] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:fee=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=ticket], *[parking:condition:right=tickets] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:fee=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=residents] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:access=private";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=residents] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:access=private";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=residents] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:access=private";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=residents] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:access=private";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=customers] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:access=customers";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=customers] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:access=customers";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=customers] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:access=customers";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=customers] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:access=customers";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:both=marked] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both";
+    fixAdd: "parking:both:markings=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane=marked] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane";
+    fixAdd: "parking:markings=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:left=marked] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left";
+    fixAdd: "parking:left:markings=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:right=marked] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right";
+    fixAdd: "parking:right:markings=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+/* error for parking:lane:both=marked */
+*[parking:condition:both=marked] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:markings=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both="ticket;residents"] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:fee=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition="ticket;residents"] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:fee=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left="ticket;residents"] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:fee=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right="ticket;residents"] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:fee=yes";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=no_stopping ] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:restriction=no_stopping ";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=no_stopping ] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:both:restriction=no_stopping ";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=no_stopping ] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:restriction=no_stopping ";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=no_stopping ] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:restriction=no_stopping ";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=disabled] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:access=no";
+    fixAdd: "parking:both:disabled=designated";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=disabled] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:access=no";
+    fixAdd: "parking:disabled=designated";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=disabled] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:access=no";
+    fixAdd: "parking:left:disabled=designated";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=disabled] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:access=no";
+    fixAdd: "parking:right:disabled=designated";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:both=parallel] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both";
+    fixAdd: "parking:both:orientation=parallel";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane=parallel] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane";
+    fixAdd: "parking:orientation=parallel";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:left=parallel] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left";
+    fixAdd: "parking:left:orientation=parallel";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:right=parallel] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right";
+    fixAdd: "parking:right:orientation=parallel";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:both=diagonal] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both";
+    fixAdd: "parking:both:orientation=diagonal";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane=diagonal] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane";
+    fixAdd: "parking:orientation=diagonal";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:left=diagonal] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left";
+    fixAdd: "parking:left:orientation=diagonal";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:right=diagonal] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right";
+    fixAdd: "parking:right:orientation=diagonal";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:both=perpendicular] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both";
+    fixAdd: "parking:both:orientation=perpendicular";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane=perpendicular] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane";
+    fixAdd: "parking:orientation=perpendicular";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:left=perpendicular] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left";
+    fixAdd: "parking:left:orientation=perpendicular";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:right=perpendicular] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right";
+    fixAdd: "parking:right:orientation=perpendicular";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:both=no_stopping] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:restriction=no_stopping";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition=no_stopping] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition";
+    fixAdd: "parking:both:restriction=no_stopping";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:left=no_stopping] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:left";
+    fixAdd: "parking:left:restriction=no_stopping";
+    fixAdd: "parking:left=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:condition:right=no_stopping] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:right:restriction=no_stopping";
+    fixAdd: "parking:right=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:both=no_stopping] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both";
+    fixAdd: "parking:both:restriction=no_stopping";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane=no_stopping] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane";
+    fixAdd: "parking:both:restriction=no_stopping";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:left=no_stopping] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left";
+    fixAdd: "parking:left:restriction=no_stopping";
+    fixAdd: "parking:left=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:right=no_stopping] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right";
+    fixAdd: "parking:right:restriction=no_stopping";
+    fixAdd: "parking:right=no";
+    -osmoseTags: list("fix:chair");
+}
+
+
+*[parking:lane:both=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane";
+    fixAdd: "parking:both=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:left=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left";
+    fixAdd: "parking:left=no";
+    -osmoseTags: list("fix:chair");
+}
+
+*[parking:lane:right=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:right";
+    fixAdd: "parking:lane:restriction=no";
+    fixAdd: "parking:lane=no";
+    -osmoseTags: list("fix:chair");
+}
+
+relation[operator="TPF Auto"][!operator:wikidata][inside("CH") {
+    throwWarning: tr("{0} is the old name", "{0.tag}");
+    suggestAlternative: "operator=TPF";
+    fixAdd: "operator=TPF";
+    fixAdd: "operator:wikidata=Q609332";
+    -osmoseTags: list("fix:chair");
+}
+
+relation[operator="TPF Auto"][operator:wikidata=Q609332][inside("CH") {
+    throwWarning: tr("{0} is the old name", "{0.tag}");
+    suggestAlternative: "operator=TPF";
+    fixAdd: "operator=TPF";
+    -osmoseTags: list("fix:chair");
+}
+
+relation[operator="TPF"][!operator:wikidata][inside("CH") {
+    throwWarning: tr("{0} wkidata", "{0.tag}");
+    fixAdd: "operator:wikidata=Q609332";
+    -osmoseTags: list("fix:chair");
+}
+
+relation[network=frimobil][!network:wikidata][inside("CH") {
+    throwWarning: tr("{0} wrong caps", "{0.tag}");
+    suggestAlternative: "network=Frimobil";
+    fixAdd: "network=Frimobil";
+    fixAdd: "network:wikidata=Q2394200";
+    -osmoseTags: list("fix:chair");
+}
+
+relation[network=frimobil][network:wikidata=Q2394200][inside("CH") {
+    throwWarning: tr("{0} wrong caps", "{0.tag}");
+    suggestAlternative: "network=Frimobil";
+    fixAdd: "network=Frimobil";
+    -osmoseTags: list("fix:chair");
+}
+
+relation[network=Frimobil][!network:wikidata][inside("CH") {
+    throwWarning: tr("{0} wikidata", "{0.tag}");
+    fixAdd: "network:wikidata=Q2394200";
+    -osmoseTags: list("fix:chair");
+}
+
+node[pipeline=marker][!marker] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    suggestAlternative: "marker=yes + subject=pipeline";
+    fixRemove: "pipeline";
+    fixAdd: "marker=yes";
+    fixAdd: "subject=pipeline";
+    -osmoseTags: list("fix:chair");
+}
+
+node[pipeline=marker][marker] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    suggestAlternative: "subject=pipeline";
+    fixRemove: "pipeline";
+    fixAdd: "subject=pipeline";
+    -osmoseTags: list("fix:chair");
+}
+
+node[type=multipolygon] {
+    throwError: tr("{0} on a node. Should be used in a relation", "{0.tag}");
+    fixRemove: "type";
+    -osmoseTags: list("fix:chair");
+}
+
+way!:closed[type=multipolygon] {
+    throwError: tr("{0} have no meaning on node and unclosed way", "{0.tag}");
+    group: tr("type=multipolygon not on a relation");
+    fixRemove: "type";
+    -osmoseTags: list("fix:chair");
+}
+
+way:area-style[type=multipolygon] {
+    throwError: tr("area (as closed way) shouldn't have type=multipolygon");
+    group: tr("type=multipolygon not on a relation");
+    fixRemove: "type";
+    -osmoseTags: list("fix:chair");
+}
+
+*[addr:housenumber=~/.*-.*/] {
+    throwError: tr("no - in addr:housenumber");
+}
