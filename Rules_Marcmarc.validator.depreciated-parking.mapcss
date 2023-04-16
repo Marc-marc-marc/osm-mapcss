@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.02_2023-04-15";
+    version: "1.03_2023-04-16";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -70,9 +70,9 @@ meta[lang=fr] {
 *[parking:lane:right=no_parking] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
-    fixRemove: "parking:condition:right";
-    fixAdd: "parking:lane:restriction=no_parking";
-    fixAdd: "parking:lane=no";
+    fixRemove: "parking:lane:right";
+    fixAdd: "parking:right:restriction=no_parking";
+    fixAdd: "parking:right=no";
 }
 
 *[parking:condition:both=no_stopping {
@@ -576,7 +576,6 @@ meta[lang=fr] {
 *[parking:lane:right=no] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
-    fixRemove: "parking:condition:right";
-    fixAdd: "parking:lane:restriction=no";
-    fixAdd: "parking:lane=no";
+    fixRemove: "parking:lane:right";
+    fixAdd: "parking:right=no";
 }
