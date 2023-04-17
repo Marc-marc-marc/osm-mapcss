@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.03_2023-04-16";
+    version: "1.04_2023-04-17";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -579,3 +579,35 @@ meta[lang=fr] {
     fixRemove: "parking:lane:right";
     fixAdd: "parking:right=no";
 }
+
+*[parking:condition:both:maxstay] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:both:maxstay=>parking:both:maxstay";
+}
+
+/* typo */
+*[parking:condition:both:max_stay] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:both:max_stay=>parking:both:maxstay";
+}
+
+*[parking:condition:maxstay] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:maxstay=>parking:both:maxstay";
+}
+
+*[parking:condition:left:maxstay] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:left:maxstay=>parking:left:maxstay";
+}
+
+*[parking:condition:right:maxstay] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:right:maxstay=>parking:right:maxstay";
+}
+
