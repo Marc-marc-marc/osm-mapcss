@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.04_2023-04-17";
+    version: "1.05_2023-04-23";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -465,6 +465,13 @@ meta[lang=fr] {
     fixRemove: "parking:lane:both";
     fixAdd: "parking:both:orientation=perpendicular";
 }
+/* error */
+*[parking:condition:both=perpendicular] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:both";
+    fixAdd: "parking:both:orientation=perpendicular";
+}
 
 *[parking:lane=perpendicular] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
@@ -611,3 +618,825 @@ meta[lang=fr] {
     fixChangeKey: "parking:condition:right:maxstay=>parking:right:maxstay";
 }
 
+*[parking:lane:both:capacity] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:lane:both:capacity=>parking:both:capacity";
+}
+
+*[parking:lane:capacity] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:lane:capacity=>parking:both:capacity";
+}
+
+*[parking:lane:left:capacity] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:lane:left:capacity=>parking:left:capacity";
+}
+
+*[parking:lane:right:capacity] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:lane:right:capacity=>parking:right:capacity";
+}
+
+
+*[parking:condition:both:capacity] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:both:capacity=>parking:both:capacity";
+}
+
+*[parking:condition:capacity] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:capacity=>parking:both:capacity";
+}
+
+*[parking:condition:left:capacity] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:left:capacity=>parking:left:capacity";
+}
+
+*[parking:condition:right:capacity] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:right:capacity=>parking:right:capacity";
+}
+*[parking:lane:both:parallel=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:parallel";
+    fixAdd: "parking:both:markings=yes";
+    fixAdd: "parking:both:orientation=parallel";
+}
+*[parking:lane:parallel=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:parallel";
+    fixAdd: "parking:both:markings=yes";
+    fixAdd: "parking:both:orientation=parallel";
+}
+*[parking:lane:left:parallel=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:parallel";
+    fixAdd: "parking:left:markings=yes";
+    fixAdd: "parking:left:orientation=parallel";
+}
+*[parking:lane:right:parallel=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:parallel";
+    fixAdd: "parking:right:markings=yes";
+    fixAdd: "parking:right:orientation=parallel";
+}
+*[parking:lane:both:diagonal=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:diagonal";
+    fixAdd: "parking:both:markings=yes";
+    fixAdd: "parking:both:orientation=diagonal";
+}
+*[parking:lane:diagonal=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:diagonal";
+    fixAdd: "parking:both:markings=yes";
+    fixAdd: "parking:both:orientation=diagonal";
+}
+*[parking:lane:left:diagonal=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:diagonal";
+    fixAdd: "parking:left:markings=yes";
+    fixAdd: "parking:left:orientation=diagonal";
+}
+*[parking:lane:right:diagonal=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:diagonal";
+    fixAdd: "parking:right:markings=yes";
+    fixAdd: "parking:right:orientation=diagonal";
+}
+*[parking:lane:both:perpendicular=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:perpendicular";
+    fixAdd: "parking:both:markings=yes";
+    fixAdd: "parking:both:orientation=perpendicular";
+}
+*[parking:lane:perpendicular=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:perpendicular";
+    fixAdd: "parking:both:markings=yes";
+    fixAdd: "parking:both:orientation=perpendicular";
+}
+*[parking:lane:left:perpendicular=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:perpendicular";
+    fixAdd: "parking:left:markings=yes";
+    fixAdd: "parking:left:orientation=perpendicular";
+}
+*[parking:lane:right:perpendicular=painted_area_only] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:perpendicular";
+    fixAdd: "parking:right:markings=yes";
+    fixAdd: "parking:right:orientation=perpendicular";
+}
+*[parking:lane:both:parallel=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=yes";
+}
+*[parking:lane:parallel=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=yes";
+}
+*[parking:lane:left:parallel=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:parallel";
+    fixAdd: "parking:left:orientation=parallel";
+    fixAdd: "parking:left=yes";
+}
+*[parking:lane:right:parallel=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:parallel";
+    fixAdd: "parking:right:orientation=parallel";
+    fixAdd: "parking:right=yes";
+}
+*[parking:lane:both:diagonal=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=yes";
+}
+*[parking:lane:diagonal=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=yes";
+}
+*[parking:lane:left:diagonal=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:diagonal";
+    fixAdd: "parking:left:orientation=diagonal";
+    fixAdd: "parking:left=yes";
+}
+*[parking:lane:right:diagonal=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:diagonal";
+    fixAdd: "parking:right:orientation=diagonal";
+    fixAdd: "parking:right=yes";
+}
+*[parking:lane:both:perpendicular=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=yes";
+}
+*[parking:lane:perpendicular=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=yes";
+}
+*[parking:lane:left:perpendicular=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:perpendicular";
+    fixAdd: "parking:left:orientation=perpendicular";
+    fixAdd: "parking:left=yes";
+}
+*[parking:lane:right:perpendicular=yes] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:perpendicular";
+    fixAdd: "parking:right:orientation=perpendicular";
+    fixAdd: "parking:right=yes";
+}
+*[parking:lane:both:parallel=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=no";
+}
+*[parking:lane:parallel=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=no";
+}
+*[parking:lane:left:parallel=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:parallel";
+    fixAdd: "parking:left:orientation=parallel";
+    fixAdd: "parking:left=no";
+}
+*[parking:lane:right:parallel=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:parallel";
+    fixAdd: "parking:right:orientation=parallel";
+    fixAdd: "parking:right=no";
+}
+*[parking:lane:both:diagonal=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=no";
+}
+*[parking:lane:diagonal=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=no";
+}
+*[parking:lane:left:diagonal=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:diagonal";
+    fixAdd: "parking:left:orientation=diagonal";
+    fixAdd: "parking:left=no";
+}
+*[parking:lane:right:diagonal=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:diagonal";
+    fixAdd: "parking:right:orientation=diagonal";
+    fixAdd: "parking:right=no";
+}
+*[parking:lane:both:perpendicular=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=no";
+}
+*[parking:lane:perpendicular=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=no";
+}
+*[parking:lane:left:perpendicular=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:perpendicular";
+    fixAdd: "parking:left:orientation=perpendicular";
+    fixAdd: "parking:left=no";
+}
+*[parking:lane:right:perpendicular=no] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:perpendicular";
+    fixAdd: "parking:right:orientation=perpendicular";
+    fixAdd: "parking:right=no";
+}
+*[parking:lane:both:parallel=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=lane";
+}
+*[parking:lane:parallel=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=lane";
+}
+*[parking:lane:left:parallel=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:parallel";
+    fixAdd: "parking:left:orientation=parallel";
+    fixAdd: "parking:left=lane";
+}
+*[parking:lane:right:parallel=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:parallel";
+    fixAdd: "parking:right:orientation=parallel";
+    fixAdd: "parking:right=lane";
+}
+*[parking:lane:both:diagonal=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=lane";
+}
+*[parking:lane:diagonal=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=lane";
+}
+*[parking:lane:left:diagonal=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:diagonal";
+    fixAdd: "parking:left:orientation=diagonal";
+    fixAdd: "parking:left=lane";
+}
+*[parking:lane:right:diagonal=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:diagonal";
+    fixAdd: "parking:right:orientation=diagonal";
+    fixAdd: "parking:right=lane";
+}
+*[parking:lane:both:perpendicular=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=lane";
+}
+*[parking:lane:perpendicular=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=lane";
+}
+*[parking:lane:left:perpendicular=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:perpendicular";
+    fixAdd: "parking:left:orientation=perpendicular";
+    fixAdd: "parking:left=lane";
+}
+*[parking:lane:right:perpendicular=on_street] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:perpendicular";
+    fixAdd: "parking:right:orientation=perpendicular";
+    fixAdd: "parking:right=lane";
+}
+*[parking:lane:both:parallel=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=half_on_kerb";
+}
+*[parking:lane:parallel=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=half_on_kerb";
+}
+*[parking:lane:left:parallel=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:parallel";
+    fixAdd: "parking:left:orientation=parallel";
+    fixAdd: "parking:left=half_on_kerb";
+}
+*[parking:lane:right:parallel=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:parallel";
+    fixAdd: "parking:right:orientation=parallel";
+    fixAdd: "parking:right=half_on_kerb";
+}
+*[parking:lane:both:diagonal=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=half_on_kerb";
+}
+*[parking:lane:diagonal=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=half_on_kerb";
+}
+*[parking:lane:left:diagonal=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:diagonal";
+    fixAdd: "parking:left:orientation=diagonal";
+    fixAdd: "parking:left=half_on_kerb";
+}
+*[parking:lane:right:diagonal=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:diagonal";
+    fixAdd: "parking:right:orientation=diagonal";
+    fixAdd: "parking:right=half_on_kerb";
+}
+*[parking:lane:both:perpendicular=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=half_on_kerb";
+}
+*[parking:lane:perpendicular=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=half_on_kerb";
+}
+*[parking:lane:left:perpendicular=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:perpendicular";
+    fixAdd: "parking:left:orientation=perpendicular";
+    fixAdd: "parking:left=half_on_kerb";
+}
+*[parking:lane:right:perpendicular=half_on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:perpendicular";
+    fixAdd: "parking:right:orientation=perpendicular";
+    fixAdd: "parking:right=half_on_kerb";
+}
+*[parking:lane:both:parallel=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=on_kerb";
+}
+*[parking:lane:parallel=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=on_kerb";
+}
+*[parking:lane:left:parallel=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:parallel";
+    fixAdd: "parking:left:orientation=parallel";
+    fixAdd: "parking:left=on_kerb";
+}
+*[parking:lane:right:parallel=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:parallel";
+    fixAdd: "parking:right:orientation=parallel";
+    fixAdd: "parking:right=on_kerb";
+}
+*[parking:lane:both:diagonal=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=on_kerb";
+}
+*[parking:lane:diagonal=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=on_kerb";
+}
+*[parking:lane:left:diagonal=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:diagonal";
+    fixAdd: "parking:left:orientation=diagonal";
+    fixAdd: "parking:left=on_kerb";
+}
+*[parking:lane:right:diagonal=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:diagonal";
+    fixAdd: "parking:right:orientation=diagonal";
+    fixAdd: "parking:right=on_kerb";
+}
+*[parking:lane:both:perpendicular=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=on_kerb";
+}
+*[parking:lane:perpendicular=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=on_kerb";
+}
+*[parking:lane:left:perpendicular=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:perpendicular";
+    fixAdd: "parking:left:orientation=perpendicular";
+    fixAdd: "parking:left=on_kerb";
+}
+*[parking:lane:right:perpendicular=on_kerb] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:perpendicular";
+    fixAdd: "parking:right:orientation=perpendicular";
+    fixAdd: "parking:right=on_kerb";
+}
+*[parking:lane:both:parallel=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:parallel=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:left:parallel=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:parallel";
+    fixAdd: "parking:left:orientation=parallel";
+    fixAdd: "parking:left=street_side";
+}
+*[parking:lane:right:parallel=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:parallel";
+    fixAdd: "parking:right:orientation=parallel";
+    fixAdd: "parking:right=street_side";
+}
+*[parking:lane:both:diagonal=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:diagonal=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:left:diagonal=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:diagonal";
+    fixAdd: "parking:left:orientation=diagonal";
+    fixAdd: "parking:left=street_side";
+}
+*[parking:lane:right:diagonal=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:diagonal";
+    fixAdd: "parking:right:orientation=diagonal";
+    fixAdd: "parking:right=street_side";
+}
+*[parking:lane:both:perpendicular=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:perpendicular=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:left:perpendicular=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:perpendicular";
+    fixAdd: "parking:left:orientation=perpendicular";
+    fixAdd: "parking:left=street_side";
+}
+*[parking:lane:right:perpendicular=street_side] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:perpendicular";
+    fixAdd: "parking:right:orientation=perpendicular";
+    fixAdd: "parking:right=street_side";
+}
+*[parking:lane:both:parallel=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:parallel=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:left:parallel=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:parallel";
+    fixAdd: "parking:left:orientation=parallel";
+    fixAdd: "parking:left=street_side";
+}
+*[parking:lane:right:parallel=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:parallel";
+    fixAdd: "parking:right:orientation=parallel";
+    fixAdd: "parking:right=street_side";
+}
+*[parking:lane:both:diagonal=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:diagonal=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:left:diagonal=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:diagonal";
+    fixAdd: "parking:left:orientation=diagonal";
+    fixAdd: "parking:left=street_side";
+}
+*[parking:lane:right:diagonal=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:diagonal";
+    fixAdd: "parking:right:orientation=diagonal";
+    fixAdd: "parking:right=street_side";
+}
+*[parking:lane:both:perpendicular=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:perpendicular=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=street_side";
+}
+*[parking:lane:left:perpendicular=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:perpendicular";
+    fixAdd: "parking:left:orientation=perpendicular";
+    fixAdd: "parking:left=street_side";
+}
+*[parking:lane:right:perpendicular=lay_by] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:perpendicular";
+    fixAdd: "parking:right:orientation=perpendicular";
+    fixAdd: "parking:right=street_side";
+}
+*[parking:lane:both:parallel=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=shoulder";
+}
+*[parking:lane:parallel=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:parallel";
+    fixAdd: "parking:both:orientation=parallel";
+    fixAdd: "parking:both=shoulder";
+}
+*[parking:lane:left:parallel=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:parallel";
+    fixAdd: "parking:left:orientation=parallel";
+    fixAdd: "parking:left=shoulder";
+}
+*[parking:lane:right:parallel=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:parallel";
+    fixAdd: "parking:right:orientation=parallel";
+    fixAdd: "parking:right=shoulder";
+}
+*[parking:lane:both:diagonal=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=shoulder";
+}
+*[parking:lane:diagonal=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:diagonal";
+    fixAdd: "parking:both:orientation=diagonal";
+    fixAdd: "parking:both=shoulder";
+}
+*[parking:lane:left:diagonal=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:diagonal";
+    fixAdd: "parking:left:orientation=diagonal";
+    fixAdd: "parking:left=shoulder";
+}
+*[parking:lane:right:diagonal=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:diagonal";
+    fixAdd: "parking:right:orientation=diagonal";
+    fixAdd: "parking:right=shoulder";
+}
+*[parking:lane:both:perpendicular=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:both:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=shoulder";
+}
+*[parking:lane:perpendicular=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:perpendicular";
+    fixAdd: "parking:both:orientation=perpendicular";
+    fixAdd: "parking:both=shoulder";
+}
+*[parking:lane:left:perpendicular=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:left:perpendicular";
+    fixAdd: "parking:left:orientation=perpendicular";
+    fixAdd: "parking:left=shoulder";
+}
+*[parking:lane:right:perpendicular=shoulder] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:lane:right:perpendicular";
+    fixAdd: "parking:right:orientation=perpendicular";
+    fixAdd: "parking:right=shoulder";
+}
+/* error */
+*[parking:condition:area=customers][amenity=parking] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:area";
+    fixAdd: "access=customers";
+}
+*[parking:condition:area:customers][amenity=parking] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "parking:condition:area:customers=>customers";
+}
+*[parking:condition:area=ticket][amenity=parking] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "parking:condition:area";
+    fixAdd: "fee=yes";
+}
