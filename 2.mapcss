@@ -1,0 +1,9 @@
+meta {
+    title: "Extended validator rules";
+    version: "1.02_2023-04-15";
+}
+*[bar=foo] {
+    throwWarning: tr("{0} file 2", "{0.tag}");
+    suggestAlternative: "pizza=yes";
+    fixAdd: "pizza=yes";
+}
