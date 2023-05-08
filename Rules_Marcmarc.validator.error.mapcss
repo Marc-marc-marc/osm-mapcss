@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.02_2023-04-15";
+    version: "1.03_2023-04-26";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -41,4 +41,10 @@ relation[network=frimobil][network:wikidata=Q2394200][inside("CH") {
 
 *[addr:housenumber=~/.*-.*/] {
     throwError: tr("no - in addr:housenumber");
+}
+*[source=survey] {
+    throwWarning: tr("{0} is of limited use", "{0.tag}");
+    suggestAlternative: "survey:date or changeset tag";
+    fixAdd: "surveyed=yes";
+    fixRemove: "source";
 }

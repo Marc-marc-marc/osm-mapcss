@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.02_2023-04-15";
+    version: "1.02_2023-04-26";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -51,7 +51,7 @@ meta[lang=fr] {
     fixAdd: "changing_table=no";
 }
 
-node[pipeline=marker][!marker] {
+node[pipeline=marker][!marker][!substance] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     suggestAlternative: "marker=yes + subject=pipeline";
@@ -60,10 +60,29 @@ node[pipeline=marker][!marker] {
     fixAdd: "subject=pipeline";
 }
 
-node[pipeline=marker][marker] {
+node[pipeline=marker][!marker][substance] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    suggestAlternative: "marker=yes + subject=pipeline";
+    fixRemove: "pipeline";
+    fixAdd: "marker=yes";
+    fixAdd: "subject=pipeline";
+    fixChangeKey: "substance=>utility";
+}
+
+node[pipeline=marker][marker][!substance] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     suggestAlternative: "subject=pipeline";
     fixRemove: "pipeline";
     fixAdd: "subject=pipeline";
+}
+
+node[pipeline=marker][marker][substance] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    suggestAlternative: "subject=pipeline";
+    fixRemove: "pipeline";
+    fixAdd: "subject=pipeline";
+    fixChangeKey: "substance=>utility";
 }
