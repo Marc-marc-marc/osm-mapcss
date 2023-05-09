@@ -1,9 +1,0 @@
-meta {
-    title: "Extended validator rules";
-    version: "1.02_2023-04-15";
-}
-*[foo=bar] {
-    throwWarning: tr("{0} file 1", "{0.tag}");
-    suggestAlternative: "beer=yes";
-    fixAdd: "beer=yes";
-}

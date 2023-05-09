@@ -1,0 +1,22 @@
+meta {
+    title: "Extended validator rules";
+    version: "1.00_2023-05-08";
+    description: "try to catch 'all' fixables errors and improvement";
+    author: "Marcmarc";
+    link: "https://github.com/Marc-marc-marc/osm-mapcss";
+    min-josm-version: "14481";
+    baselanguage: "en";
+    -osmoseTags: list("fix:chair", "deprecated", "tree");
+    -osmoseItemClassLevel: "4010/40106/3";
+}
+meta[lang=fr] {
+    title: "Règles de validations étendues";
+    description: "essaye de traiter "toutes" les erreurs corrigibles et les améliorations";
+}
+
+*[wood=eucalypt], *[type=eucalypt], *[leaf_type=eucalypt], *[leaf_cycle=eucalypt],*[genus=eucalypt], *[species=eucalypt], *[forest=eucalypt], *[tree=eucalypt] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "{0.key}";
+    fixAdd: "taxon=Eucalypteae";
+}
