@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.05_2023-04-26";
+    version: "1.06_2023-05-13";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -11,7 +11,7 @@ meta {
 }
 meta[lang=fr] {
     title: "Règles de validations étendues";
-    description: "essaye de traiter "toutes" les erreurs corrigibles et les améliorations";
+    description: "essaye de traiter 'toutes' les erreurs corrigibles et les améliorations";
 }
 
 *[parking:condition:both=no_parking] {
@@ -75,7 +75,7 @@ meta[lang=fr] {
     fixAdd: "parking:right=no";
 }
 
-*[parking:condition:both=no_stopping {
+*[parking:condition:both=no_stopping] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
@@ -83,7 +83,7 @@ meta[lang=fr] {
     fixAdd: "parking:both=no";
 }
 
-*[parking:condition=no_stopping {
+*[parking:condition=no_stopping] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     fixRemove: "parking:condition";
@@ -91,7 +91,7 @@ meta[lang=fr] {
     fixAdd: "parking:both=no";
 }
 
-*[parking:condition:left=no_stopping {
+*[parking:condition:left=no_stopping] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:left";
@@ -99,7 +99,7 @@ meta[lang=fr] {
     fixAdd: "parking:left=no";
 }
 
-*[parking:condition:right=no_stopping {
+*[parking:condition:right=no_stopping] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:right";

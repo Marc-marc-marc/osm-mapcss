@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.02_2023-04-26";
+    version: "1.03_2023-05-13";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -11,7 +11,7 @@ meta {
 }
 meta[lang=fr] {
     title: "Règles de validations étendues";
-    description: "essaye de traiter "toutes" les erreurs corrigibles et les améliorations";
+    description: "essaye de traiter 'toutes' les erreurs corrigibles et les améliorations";
 }
 
 *[source_date][source] {
@@ -22,14 +22,14 @@ meta[lang=fr] {
 }
 
 *[date:source][source] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    throwWarning: tr("{0} is deprecated", "{0.key}");
     suggestAlternative: "source:date";
     group: tr("deprecated tagging");
     fixChangeKey: "source_date=>source:date";
 }
 
 *[date:survey] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    throwWarning: tr("{0} is deprecated", "{0.key}");
     suggestAlternative: "survey:date";
     group: tr("deprecated tagging");
     fixChangeKey: "date:survey=>survey:date";

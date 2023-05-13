@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.03_2023-04-26";
+    version: "1.04_2023-05-13";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -13,27 +13,27 @@ meta[lang=fr] {
     description: "essaye de traiter "toutes" les erreurs corrigibles et les améliorations";
 }
 
-relation[operator="TPF Auto"][!operator:wikidata][inside("CH") {
+relation[operator="TPF Auto"][!"operator:wikidata"][inside("CH")] {
     throwWarning: tr("{0} is the old name", "{0.tag}");
     suggestAlternative: "operator=TPF";
     fixAdd: "operator=TPF";
     fixAdd: "operator:wikidata=Q609332";
 }
 
-relation[operator="TPF Auto"][operator:wikidata=Q609332][inside("CH") {
+relation[operator="TPF Auto"]["operator:wikidata"=Q609332][inside("CH")] {
     throwWarning: tr("{0} is the old name", "{0.tag}");
     suggestAlternative: "operator=TPF";
     fixAdd: "operator=TPF";
 }
 
-relation[network=frimobil][!network:wikidata][inside("CH") {
+relation[network=frimobil][!"network:wikidata"][inside("CH")] {
     throwWarning: tr("{0} wrong caps", "{0.tag}");
     suggestAlternative: "network=Frimobil";
     fixAdd: "network=Frimobil";
     fixAdd: "network:wikidata=Q2394200";
 }
 
-relation[network=frimobil][network:wikidata=Q2394200][inside("CH") {
+relation[network=frimobil]["network:wikidata"=Q2394200][inside("CH")] {
     throwWarning: tr("{0} wrong caps", "{0.tag}");
     suggestAlternative: "network=Frimobil";
     fixAdd: "network=Frimobil";
