@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.04_2023-05-13";
+    version: "1.05_2023-05-23";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -39,7 +39,7 @@ relation[network=frimobil]["network:wikidata"=Q2394200][inside("CH")] {
     fixAdd: "network=Frimobil";
 }
 
-*[addr:housenumber=~/.*-.*/] {
+*["addr:housenumber"=~/.*-.*/] {
     throwError: tr("no - in addr:housenumber");
 }
 *[source=survey] {
@@ -47,4 +47,24 @@ relation[network=frimobil]["network:wikidata"=Q2394200][inside("CH")] {
     suggestAlternative: "survey:date or changeset tag";
     fixAdd: "surveyed=yes";
     fixRemove: "source";
+}
+*[crossing_ref=island]["crossing:island"=yes] {
+    throwWarning: tr("wrong usage of {0}", "{0.value}");
+    suggestAlternative: "crossing:island=yes";
+    fixRemove: "crossing_ref";
+}
+*[crossing_ref=island][!"crossing:island"] {
+    throwWarning: tr("wrong usage of {0}", "{0.value}");
+    suggestAlternative: "crossing:island=yes";
+    fixAdd: "crossing:island=yes";
+    fixRemove: "crossing_ref";
+}
+*[crossing_ref=island]["crossing:island"]["crossing:island"!=yes] {
+    throwWarning: tr("conflit {0}", "{0.value}");
+    suggestAlternative: "crossing:island=yes";
+}
+*["crossing:island"=island] {
+    throwWarning: tr("wrong usage of {0}", "{0.value}");
+    suggestAlternative: "crossing:island=yes";
+    fixAdd: "crossing:island=yes";
 }

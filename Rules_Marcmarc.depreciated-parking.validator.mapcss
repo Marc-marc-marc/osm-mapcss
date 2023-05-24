@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.06_2023-05-13";
+    version: "1.07_2023-05-25";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -79,7 +79,7 @@ meta[lang=fr] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:both";
-    fixAdd: "parking:both:restriction=no_stopping;
+    fixAdd: "parking:both:restriction=no_stopping";
     fixAdd: "parking:both=no";
 }
 
@@ -87,7 +87,7 @@ meta[lang=fr] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     fixRemove: "parking:condition";
-    fixAdd: "parking:both:restriction=no_stopping;
+    fixAdd: "parking:both:restriction=no_stopping";
     fixAdd: "parking:both=no";
 }
 
@@ -95,7 +95,7 @@ meta[lang=fr] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:left";
-    fixAdd: "parking:left:restriction=no_stopping;
+    fixAdd: "parking:left:restriction=no_stopping";
     fixAdd: "parking:left=no";
 }
 
@@ -103,7 +103,7 @@ meta[lang=fr] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:right";
-    fixAdd: "parking:right:restriction=no_stopping;
+    fixAdd: "parking:right:restriction=no_stopping";
     fixAdd: "parking:right=no";
 }
 
@@ -1408,13 +1408,6 @@ meta[lang=fr] {
     fixAdd: "parking:both:orientation=perpendicular";
     fixAdd: "parking:both=shoulder";
 }
-*[parking:lane:left:perpendicular=shoulder] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
-    group: tr("deprecated tagging");
-    fixRemove: "parking:lane:left:perpendicular";
-    fixAdd: "parking:left:orientation=perpendicular";
-    fixAdd: "parking:left=shoulder";
-}
 *[parking:lane:right:perpendicular=shoulder] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
@@ -1439,4 +1432,16 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:condition:area";
     fixAdd: "fee=yes";
+}
+*[/^parking:left:/][!"parking:left"][!"parking:both"] {
+    throwWarning: tr("{0} without parking:left", "{0.key}");
+    fixAdd: "parking:left=yes";
+}
+*[/^parking:right:/][!"parking:right"][!"parking:both"] {
+    throwWarning: tr("{0} without parking:right", "{0.key}");
+    fixAdd: "parking:right=yes";
+}
+*[/^parking:both:/][!"parking:both"][!"parking:left"][!"parking:right"] {
+    throwWarning: tr("{0} without parking:both", "{0.key}");
+    fixAdd: "parking:both=yes";
 }
