@@ -414,7 +414,7 @@ meta[lang=fr] {
     throwWarning: tr("{0} is deprecated", "{0.tag}");
     group: tr("deprecated tagging");
     fixRemove: "parking:lane";
-    fixAdd: "parking:orientation=parallel";
+    fixAdd: "parking:both:orientation=parallel";
 }
 
 *[parking:lane:left=parallel] {
@@ -1175,13 +1175,13 @@ meta[lang=fr] {
     group: tr("deprecated tagging");
     fixRemove: "parking:lane:both:parallel";
     fixAdd: "parking:both:orientation=parallel";
-    fixAdd: "parking:both=street_side";
+fixAdd: "parking:both=street_side";
 }
 *[parking:lane:parallel=street_side] {
-    throwWarning: tr("{0} is deprecated", "{0.tag}");
-    group: tr("deprecated tagging");
-    fixRemove: "parking:lane:parallel";
-    fixAdd: "parking:both:orientation=parallel";
+throwWarning: tr("{0} is deprecated", "{0.tag}");
+group: tr("deprecated tagging");
+fixRemove: "parking:lane:parallel";
+fixAdd: "parking:both:orientation=parallel";
     fixAdd: "parking:both=street_side";
 }
 *[parking:lane:left:parallel=street_side] {
