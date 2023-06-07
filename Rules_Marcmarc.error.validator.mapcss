@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.06_2023-05-29";
+    version: "1.07_2023-06-07";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -72,4 +72,9 @@ relation[network=frimobil]["network:wikidata"=Q2394200][inside("CH")] {
     throwWarning: tr("invalid color {0}", "{0.value}");
     suggestAlternative: "no underscore";
     fixAdd: "{0.key}=lightgray";
+}
+relation[type=associatedstreet] {
+    throwWarning: tr("missing caps for the S in {0}", "{0.value}");
+    suggestAlternative: "type=associatedStreet";
+    fixAdd: "type=associatedStreet"
 }
