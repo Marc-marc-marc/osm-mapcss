@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.04_2023-05-25";
+    version: "1.05_2023-06-14";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -90,4 +90,15 @@ node[substance][marker][!utility] {
     throwWarning: tr("{0} is deprecated on marker", "{0.tag}");
     group: tr("deprecated tagging");
     fixChangeKey: "substance=>utility";
+}
+node[marker=yes][cover=roof] {
+    throwWarning: tr("{0} is deprecated on marker", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixAdd: "marker=aerial";
+    fixRemove: "cover";
+}
+node[marker=aerial][cover=roof] {
+    throwWarning: tr("{0} is deprecated on marker", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixRemove: "cover";
 }

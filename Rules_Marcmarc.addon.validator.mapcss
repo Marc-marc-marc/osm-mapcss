@@ -1,6 +1,6 @@
 meta {
     title: "Extended validator rules";
-    version: "1.04_2023-05-26";
+    version: "1.04_2023-07-02";
     description: "try to catch 'all' fixables errors and improvement";
     author: "Marcmarc";
     link: "https://github.com/Marc-marc-marc/osm-mapcss";
@@ -24,5 +24,10 @@ relation[network=Frimobil][!"network:wikidata"][inside("CH")] {
 }
 *[operator="GRTgaz"][!"operator:wikidata"][inside("FR")] {
     throwWarning: tr("{0} wkidata", "{0.tag}");
+    fixAdd: "operator:wikidata=Q820035";
+}
+*[operator="GRTGaz"][!"operator:wikidata"][inside("FR")] {
+    throwWarning: tr("{0} wkidata", "{0.tag}");
+    fixAdd: "operator=GRTgaz";
     fixAdd: "operator:wikidata=Q820035";
 }
