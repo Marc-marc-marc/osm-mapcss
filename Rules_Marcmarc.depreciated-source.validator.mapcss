@@ -1,0 +1,56 @@
+meta {
+    title: "Extended validator rules for source";
+    version: "1.01_2024-09-24";
+    description: "try to catch 'all' fixables errors and improvement";
+    author: "Marcmarc";
+    link: "https://github.com/Marc-marc-marc/osm-mapcss";
+    min-josm-version: "14481";
+    baselanguage: "en";
+    -osmoseTags: list("fix:chair", "deprecated", "cycle");
+    -osmoseItemClassLevel: "4010/4010/2";
+}
+meta[lang=fr] {
+    title: "Règles de validations étendues pour le tag source";
+    description: "essaye de traiter 'toutes' les erreurs corrigibles et les améliorations";
+}
+
+*[source=~/(?i)^survey$/][!"survey:date"] {
+    throwWarning: tr("source~survey is deprecated");
+    group: tr("deprecated tagging");
+    fixRemove: "source";
+    fixAdd: "surveyed=yes";
+}
+
+*[source=~/(?i)^survey$/]["survey:date"] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixRemove: "source";
+}
+*[source=~/(?i)^survey 2024$/][!"survey:date"] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixRemove: "source";
+    fixAdd: "survey:date=2024";
+}
+*[source=~/(?i)survey/][source~"2024"][source!="survey 2024"][!"survey:date"] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+}
+*[facebook][!"contact:facebook"] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "facebook=>contact:facebook";
+}
+*[facebook]["contact:facebook"] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+}
+*[instagram][!"contact:instagram"] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+    fixChangeKey: "instagram=>contact:instagram";
+}
+*[instagram]["contact:instagram"] {
+    throwWarning: tr("{0} is deprecated", "{0.key}");
+    group: tr("deprecated tagging");
+}

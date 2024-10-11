@@ -1,0 +1,27 @@
+meta {
+    title: "Extended validator rules for cycleway";
+    version: "1.00_2024-09-22";
+    description: "try to catch 'all' fixables errors and improvement";
+    author: "Marcmarc";
+    link: "https://github.com/Marc-marc-marc/osm-mapcss";
+    min-josm-version: "14481";
+    baselanguage: "en";
+    -osmoseTags: list("fix:chair", "deprecated", "cycle");
+    -osmoseItemClassLevel: "4010/4010/2";
+}
+meta[lang=fr] {
+    title: "Règles de validations étendues pour les cycleway";
+    description: "essaye de traiter 'toutes' les erreurs corrigibles et les améliorations";
+}
+
+*[cycleway=opposite]["oneway:bicycle"?!], *[cycleway=opposite][!"oneway:bicycle"] {
+    throwWarning: tr("{0} is deprecated", "{0.tag}");
+    group: tr("deprecated tagging");
+    fixAdd: "cycleway=no";
+    fixAdd: "oneway:bicycle=no";
+}
+
+*[cycleway=opposite]["oneway:bicycle"?], *[cycleway=opposite]["oneway"?!] {
+    throwWarning: tr("{0} is deprecated but invalid combinaison", "{0.tag}");
+    group: tr("deprecated tagging");
+}
